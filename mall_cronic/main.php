@@ -45,3 +45,37 @@ if(isset($_GET['first'])){
 		}
     
 }
+
+if(isset($_GET['sec'])){
+    try{
+      //  $url = $_GET['sec'];
+        
+        $sql ="SELECT page, dur FROM list";
+        
+        $query = $db->prepare($sql);
+        //$query->bindValue(':name', $name);
+        $query -> execute();
+    
+        while($r = $query->fetch(PDO::FETCH_ASSOC)){ 
+     			$arr[] = $r;
+     		}
+       
+       /* $text = "";
+        $numb = "";
+        
+        foreach($arr as $row){
+          $text .=  $row['url']." ";
+            $numb .= $row['dur']." ";    
+        }
+            echo ($text);echo "~"; echo $numb;
+        */
+        echo json_encode($arr);
+        
+        
+    }
+    catch (PDOException $e) {
+			echo "PDO fel: ".$e->getMessage();      
+			exit();
+		}
+    
+}

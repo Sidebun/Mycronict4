@@ -5,6 +5,26 @@ jQuery(function ($) {
         opacity: 0
     });
 
+    /*
+    var pages = [
+            {
+                page: 'http://jenkins-mw.miclaser.net/view/DV6%20Monitor/',
+                dur: 3000
+            },
+            {
+                page: 'http://jenkins-mw.miclaser.net/view/Syncra-build-monitor/',
+                dur: 6000
+            },
+            {
+                page: 'http://jenkins-mw.miclaser.net/view/P80%20Custom/',
+                dur: 9000
+            }
+],
+*/
+
+
+
+
 
 
 
@@ -17,29 +37,37 @@ jQuery(function ($) {
         async: false
     });
 
-    $.get('main.php?first', function (data) {
-        data_treat = data;
+    $.get('main.php?sec', function (data) {
+        data_treat = jQuery.parseJSON(data);
 
         console.log(typeof (data));
         console.log("Load was performed.");
         // console.log(dong + "dong");
+
+        //jQuery.parseJSON(data);
     });
     jQuery.ajaxSetup({
         async: true
     });
-    // console.log(data_treat);
+    console.log(data_treat);
+    console.log(data_treat.length);
 
+    pages = data_treat;
 
+    console.log(pages);
+
+    /*MAIN
+    
     //    console.log(test + "test");
-    treated = data_treat.split('~');
+    treated = data_treat.split('~~');
     texts_treat = treated[0];
     numbers_treat = treated[1];
     texts = texts_treat.split(' ');
     numbers = numbers_treat.split(' ');
 
 
-    //    console.log("data treated");
-    //    console.log(texts.length + "\n" + numbers.length);
+    console.log("data treated");
+    console.log(texts.length + "\n" + numbers.length);
 
 
     for (i = 0; i <= texts.length - 2; i++) {
@@ -53,8 +81,45 @@ jQuery(function ($) {
         // console.log("some");
     }
 
-    //    console.log(JSON.stringify(pages));
-    //    console.log(pages);
+    console.log(JSON.stringify(pages));
+    console.log(pages);
+
+    // console.log(finish[0].page);
+   
+        var foo, doo;
+        foo = 'http://jenkins-mw.miclaser.net/view/DV6%20Monitor/';
+        doo = 3000;
+
+        
+            finish[0] = [];
+            finish[0].page = 'http://jenkins-mw.miclaser.net/view/DV6%20Monitor/';
+            finish[0].dur = 3000;
+        
+
+        finish[0] = {
+            page: foo,
+            dur: doo
+        };
+
+
+        var test = new Array([{
+            page: 'http://jenkins.com',
+            dur: 3000
+        }]);
+
+
+        console.log(test);
+        console.log(finish);
+        console.log(pages);
+
+
+    while (i >= treated.length - 1) {
+        alert("hej");
+    }
+*/
+
+
+
 
 
     var p = pages.length,
