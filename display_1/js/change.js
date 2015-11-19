@@ -38,17 +38,29 @@ jQuery(function ($) {
     });
 
     $.get('main.php?first', function (data) {
-        data_treat = data;
+        data_treat = jQuery.parseJSON(data);
 
-        console.log(typeof (data));
+        //console.log(typeof (data));
         console.log("Load was performed.");
         // console.log(dong + "dong");
 
         //jQuery.parseJSON(data);
     });
+
     jQuery.ajaxSetup({
         async: true
     });
+    // NEW BEST WAY
+    console.log(data_treat);
+
+    pages = data_treat;
+
+    console.log(pages);
+
+
+
+    /* OLD SHIT WAY
+    
     console.log(data_treat);
 
 
@@ -80,37 +92,8 @@ jQuery(function ($) {
     console.log(pages);
 
     // console.log(finish[0].page);
-    /*
-        var foo, doo;
-        foo = 'http://jenkins-mw.miclaser.net/view/DV6%20Monitor/';
-        doo = 3000;
-
-        
-            finish[0] = [];
-            finish[0].page = 'http://jenkins-mw.miclaser.net/view/DV6%20Monitor/';
-            finish[0].dur = 3000;
-        
-
-        finish[0] = {
-            page: foo,
-            dur: doo
-        };
-
-
-        var test = new Array([{
-            page: 'http://jenkins.com',
-            dur: 3000
-        }]);
-
-
-        console.log(test);
-        console.log(finish);
-        console.log(pages);
-
-
-    while (i >= treated.length - 1) {
-        alert("hej");
-    }
+    
+     
 */
 
 

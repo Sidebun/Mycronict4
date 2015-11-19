@@ -15,6 +15,23 @@
 
 if(isset($_GET['first'])){
     try{
+        
+         //  $url = $_GET['sec'];
+        
+        $sql ="SELECT page, dur FROM list";
+        
+        $query = $db->prepare($sql);
+        //$query->bindValue(':name', $name);
+        $query -> execute();
+    
+        while($r = $query->fetch(PDO::FETCH_ASSOC)){ 
+     			$arr[] = $r;
+     		}
+       
+     
+        echo json_encode($arr);
+        
+        /*
         $url = $_GET['first'];
         
         $sql ="SELECT * FROM list";
@@ -35,7 +52,7 @@ if(isset($_GET['first'])){
             $numb .= $row['dur']." ";    
         }
             echo ($text);echo "~~"; echo $numb;
-        
+        */
         
         
     }
