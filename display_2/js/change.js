@@ -38,20 +38,25 @@ jQuery(function ($) {
     });
 
     $.get('main.php?first', function (data) {
-        data_treat = data;
+        data_treat = jQuery.parseJSON(data);
 
-        console.log(typeof (data));
+        //console.log(typeof (data));
         console.log("Load was performed.");
         // console.log(dong + "dong");
 
         //jQuery.parseJSON(data);
     });
+
     jQuery.ajaxSetup({
         async: true
     });
     console.log(data_treat);
 
+    pages = data_treat;
 
+    console.log(pages);
+
+    /*
 
     //    console.log(test + "test");
     treated = data_treat.split('~~');
@@ -62,7 +67,11 @@ jQuery(function ($) {
 
 
     console.log("data treated");
-    console.log(texts.length + "\n" + numbers.length);
+   // console.log(texts.length + "\n" + numbers.length);
+    
+    
+
+   
 
 
     for (i = 0; i <= texts.length - 2; i++) {
