@@ -1,18 +1,8 @@
 jQuery(function ($) {
     // 'use strict';
-
-
-
-
-
-
-
-
     var data_treat, tx = 'list',
         treated, pages = [],
         dropcont, dropvalue;
-    //dong.get('main.php?first=' + tx);
-
 
     var button = $('.js-button');
     var dropdown = $('.dropdown');
@@ -22,7 +12,6 @@ jQuery(function ($) {
 
 
     button.click(function () {
-        //dropdown.hide();
 
         getdropcontent();
 
@@ -61,11 +50,7 @@ jQuery(function ($) {
         $.get('main.php?content', function (data) {
             dropcont = jQuery.parseJSON(data);
 
-            //console.log(typeof (data));
             console.log("content-Load was performed.");
-            // console.log(dong + "dong");
-
-            //jQuery.parseJSON(data);
         });
 
         jQuery.ajaxSetup({
@@ -95,19 +80,13 @@ jQuery(function ($) {
         $.get('main.php?first=' + dropvalue, function (data) {
             data_treat = jQuery.parseJSON(data);
 
-            //console.log(typeof (data));
             console.log("Load was performed.");
-            // console.log(dong + "dong");
-
-            //jQuery.parseJSON(data);
         });
 
         jQuery.ajaxSetup({
             async: true
         });
         // NEW BEST WAY
-        console.log(data_treat);
-
         pages = data_treat;
 
         console.log(pages);

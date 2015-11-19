@@ -296,5 +296,21 @@ body {
 }
 
 .dropdown {
-    margin-left: 80px;
+    position: absolute;
+    width: 800px;
+    /* or absolute */
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -400px;
+}
+
+.js-h1 {
+    text-align: center;
+}
+
+.js-drop {
+    position: relative;
+    left: 50%;
+    margin-left: -50px;
 }
