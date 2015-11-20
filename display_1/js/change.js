@@ -5,7 +5,7 @@ jQuery(function ($) {
         opacity: 0
     });
 
-    /*
+
     var pages = [
             {
                 page: 'http://jenkins-mw.miclaser.net/view/DV6%20Monitor/',
@@ -20,7 +20,6 @@ jQuery(function ($) {
                 dur: 9000
             }
 ],
-*/
 
 
 
@@ -28,8 +27,9 @@ jQuery(function ($) {
 
 
 
-    var data_treat, tx = 'list',
-        treated, numbers, numbers_treat, texts, texts_treat, url, time, i, pages = [];
+
+        var data_treat, tx = 'list',
+            treated, numbers, numbers_treat, texts, texts_treat, url, time, i, pages = [];
     //dong.get('main.php?first=' + tx);
 
 
