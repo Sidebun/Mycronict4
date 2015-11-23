@@ -7,7 +7,7 @@ jQuery(function ($) {
     var dropdown = $('.dropdown');
     var dropcontwrite = $('.js-place');
 
-
+    //different arrays for handling the information from confluence rest api
     var array = [],
         regtoo = [],
         pages = [],
@@ -18,7 +18,7 @@ jQuery(function ($) {
 
 
 
-
+    // the main init function
     button.click(function () {
 
         console.log('menu button has been clicked and the program is initializing!');
