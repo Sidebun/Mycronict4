@@ -1,16 +1,12 @@
 <?php
   header("Content-Type: text/html; charset=UTF-8");
-//$password= '686c6d6361324878';
-//$password = hex2bin($password);
-//echo(bin2hex($password));
-//echo(hex2bin($password));
 
 if(isset($_GET['sdf55FF6477dsdjhfb46'])){
     try{
 
 
 //the password, username and url to rest api page
-$password='hlmca2Hx';
+$password=hex2bin('686c6d6361324878');
 $username='SEEDGU0';
 
 
@@ -36,8 +32,8 @@ if(!curl_exec($ch)){
 curl_close ($ch);
  
     } // catch any errors and print them
-    catch (PDOException $e) {
-			echo "PDO fel: ".$e->getMessage();      
+     catch (PDOException $e) {
+			echo "fel: ".$e->getMessage();      
 			exit();
 		}
     
