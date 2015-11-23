@@ -1,142 +1,121 @@
 jQuery(function ($) {
     // 'use strict';
     var data_treat, tx = 'list',
-        treated,
-        regone, regtee, regfoo;
+        treated, regtee, regfoo, dropvalue;
 
     var button = $('.js-button');
     var dropdown = $('.dropdown');
     var dropcontwrite = $('.js-place');
 
 
-
-
     var array = [],
         regtoo = [],
         pages = [],
-        regfii = [];
-
-
-
-
-    jQuery.ajaxSetup({
-        async: false
-    });
-
-    $.get('main.php?first', function (data) {
-        //data_treat = encodeURIComponent(data);
-        data_treat = jQuery.parseJSON(data);
-        //data_treat = decodeURIComponent(data_treat);
-        console.log(data_treat);
-        console.log(typeof (data_treat))
-
-        console.log("Load was performed.");
-    });
-
-    jQuery.ajaxSetup({
-        async: true
-    });
-    // NEW BEST WAY
-    pages = data_treat.body.storage.value;
-
-    regtee = pages.split('<table>');
-
-
-    var patthttp = new RegExp('(?:href=")(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w %?\.-]*)', 'g');
-
-
-    for (var i = 0; i <= regtee.length - 1; i++) {
-
-        regtoo[i] = regtee[i].match(/(?:href=")(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\~\=\_\/\w %?\.\&-]*)/g);
-        regfii[i] = regtee[i].match(/<td>(\d{4,6})/g)
-
-    }
-    console.log(regtoo);
-
-
-
-    for (var i = 1; i <= regtoo.length - 1; i++) {
-        array[i] = []
-        for (var u = 0; u <= regtoo[i].length - 1; u++) {
-
-            array[i][u] = {
-                page: ((regtoo[i][u]).split('"'))[1],
-                dur: ((regfii[i][u]).split('<td>'))[1]
-            }
-        }
-
-    }
-
-
-
-
-    // regone = pages.match(/.{22}(\w+).{9}(\w+).{9}(\w+)/);
-    // regtoo = pages.match(/href="((https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w %?\.-]*))/g);
-
-    console.log(array);
-    //console.log(regone);
-    //    console.log(regtee);
-
-    //    console.log(pages);
+        regfii = [],
+        regname = [],
+        regone = [];
 
 
 
 
 
+    button.click(function () {
+        init_array();
+
+        getdropcontent();
 
 
+        console.log('menu clicked');
 
-    /*
-        button.click(function () {
+        $('.contclick').click(function () {
 
-            getdropcontent();
+            console.log("content clicked");
 
+            dropvalue = $(this).text()
 
-            console.log('menu clicked');
+            console.log(dropvalue);
 
-            $('.contclick').click(function () {
-
-                console.log("content clicked");
-
-                dropvalue = $(this).text()
-
-                console.log(dropvalue);
-
-                $('#if_two').css({
-                    opacity: 0
-                });
-
-                loadpage();
-                showpage();
-                console.log("the pages:");
-                console.log(pages);
-                dropdown.hide();
+            $('#if_two').css({
+                opacity: 0
             });
 
-
+            loadpage();
+            showpage();
+            console.log("the pages:");
+            console.log(pages);
+            dropdown.hide();
         });
 
-    */
-    function getdropcontent() {
 
+    });
+
+
+
+
+
+
+    function init_array() {
         jQuery.ajaxSetup({
             async: false
         });
 
-        $.get('main.php?content', function (data) {
-            dropcont = jQuery.parseJSON(data);
-
-            console.log("content-Load was performed.");
+        $.get('main.php?sdf55FF6477dsdjhfb46', function (data) {
+            data_treat = jQuery.parseJSON(data);
+            console.log(data_treat);
+            console.log("Load was performed.");
         });
 
         jQuery.ajaxSetup({
             async: true
         });
 
+        regone = data_treat.body.storage.value;
+
+        regtee = regone.split('<tbody>');
+
+        for (var i = 0; i <= regtee.length - 1; i++) {
+
+            regtoo[i] = regtee[i].match(/(?:href=")(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\~\=\;\:\$\#\@\_\/\w %?\.\&-]*)/g);
+            regfii[i] = regtee[i].match(/<td>(\d{4,6})/g);
+            regname[i] = regtee[i].match(/<th>(<p>)?(\w+([\w\-\&\+\=\(\)]+)?)/);
+
+        }
+        console.log(regtoo);
+        console.log(regfii);
+        console.log(regname);
+
+
+        for (var i = 1; i <= regtoo.length - 1; i++) {
+            array[i] = []
+            for (var u = 0; u <= regtoo[i].length - 1; u++) {
+
+                array[i].name = (regname[i][2]);
+
+
+                array[i][u] = {
+                    page: ((regtoo[i][u]).split('"'))[1],
+                    dur: ((regfii[i][u]).split('<td>'))[1]
+                }
+            }
+
+        }
+
+        console.log(array.length);
+        console.log(array);
+
+    }
+
+
+
+
+    function getdropcontent() {
+
+
+
         var contentofdrop = "";
 
-        for (var i = 0; i <= dropcont.length - 1; i++) {
-            contentofdrop += '<li><a href="#" class="contclick">' + dropcont[i].name + '</a></li>';
+        for (var i = 1; i <= array.length - 1; i++) {
+            contentofdrop += '<li><a href="#" class="contclick">' + array[i].name + '</a></li>';
 
 
         }
@@ -149,23 +128,19 @@ jQuery(function ($) {
 
 
     function loadpage() {
-        jQuery.ajaxSetup({
-            async: false
-        });
 
-        $.get('main.php?first=' + dropvalue, function (data) {
-            data_treat = jQuery.parseJSON(data);
+        for (var i = 1; i <= array.length - 1; i++) {
+            if (array[i].name == dropvalue) {
 
-            console.log("Load was performed.");
-        });
+                pages = array[i];
 
-        jQuery.ajaxSetup({
-            async: true
-        });
-        // NEW BEST WAY
-        pages = data_treat;
+            } else {
+                console.log("nope");
+            }
 
-        console.log(pages);
+
+
+        }
 
     }
 
