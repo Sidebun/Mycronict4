@@ -27,16 +27,25 @@
 <body>
 
 
-    <div class="dropdown jumbotron">
+    <div class="dropdown jumbotron col-md-6 col-xl-6 col-sm-6 col-xs-6">
         <div class="js-h1">
             <h1 class="">Please choose a display!</h1></div>
-        <div class="js-drop">
+        <div class="btn-split col-md-4 col-sm-4">
+            <button class="btn btn-default" onclick="window.location.href='split_hori.html'">Horizontal split view --</button>
+        </div>
+
+        <div class="js-drop col-md-4 col-sm-4">
             <button class="btn btn-success dropdown-toggle js-button" type="button" data-toggle="dropdown">HERE
                 <span class="caret"></span></button>
             <ul class="dropdown-menu js-place">
-                <li><a href="#">I'm very sorry, but a problem has ocurred</a></li>
+                <li><a href="#">I'm sorry, some problem has ocurred</a></li>
 
             </ul>
+
+
+        </div>
+        <div class="btn-split col-md-4 col-sm-4">
+            <button class="btn btn-default" onclick="window.location.href='split_vert.html'">Vertical split view |</button>
         </div>
     </div>
 
